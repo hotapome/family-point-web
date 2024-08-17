@@ -72,12 +72,7 @@
 </template>
 
 <script setup lang="ts">
-type Task = {
-  id: number;
-  title: string;
-  point: number;
-  isSelect: boolean;
-};
+import type {Task} from "~/types/code";
 // TODO: APIから取得できるようにする
 const taskList: Task[] = [
   { id: 1, title: "掃除", point: 3, isSelect: false },
