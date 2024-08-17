@@ -28,26 +28,41 @@
       ポイント追加
     </button>
     <!-- モーダルの部分 -->
-    <div v-if="showConfirmAddPointModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+    <div
+      v-if="showConfirmAddPointModal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
+    >
       <div class="bg-white p-5 rounded shadow-lg">
         <h2 class="text-lg font-bold mb-4">ポイントを追加しますか？</h2>
         <p>合計 {{ sumPoint }} ポイントが追加されます。</p>
         <div class="mt-4 flex justify-end">
-          <button @click="addPoint" class="bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2">
+          <button
+            @click="addPoint"
+            class="bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2"
+          >
             追加する
           </button>
-          <button @click="showConfirmAddPointModal = false" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">
+          <button
+            @click="showConfirmAddPointModal = false"
+            class="bg-gray-500 text-white font-bold py-2 px-4 rounded"
+          >
             キャンセル
           </button>
         </div>
       </div>
     </div>
-    <div v-if="showSuccessAddPointModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+    <div
+      v-if="showSuccessAddPointModal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
+    >
       <div class="bg-white p-5 rounded shadow-lg">
         <h2 class="text-lg font-bold mb-4">SUCCESS!</h2>
         <p>合計 {{ sumPoint }} ポイントが追加されました！</p>
         <div class="mt-4 flex justify-end">
-          <button @click="addPointModalBack" class="bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2">
+          <button
+            @click="addPointModalBack"
+            class="bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2"
+          >
             戻る
           </button>
         </div>
@@ -96,17 +111,16 @@ const confirmAddPoint = () => {
   showConfirmAddPointModal.value = true;
 };
 // TODO: APIを使ったポイント追加処理を実装する
-const addPoint=()=>{
+const addPoint = () => {
   showConfirmAddPointModal.value = false;
   showSuccessAddPointModal.value = true;
-  sumPoint.value = 0;
-}
-const addPointModalBack=()=>{
+};
+const addPointModalBack = () => {
   // 選択中のタスクをリセット
   taskList.forEach((task) => {
     task.isSelect = false;
   });
   sumPoint.value = 0;
   showSuccessAddPointModal.value = false;
-}
+};
 </script>
