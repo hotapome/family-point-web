@@ -4,21 +4,15 @@
     <p>追加予定の合計ポイント: {{ sumPoint }}</p>
     <div class="my-2">
       <div class="grid grid-cols-5 gap-2">
-        <button
+        <TaskButtom
           v-for="task in taskList"
           :key="task.id"
           @click="selectTask(task.id)"
-          :class="[
-            'text-white py-2 px-10 rounded m-1',
-            task.isSelect ? 'bg-gray-800' : 'bg-gray-600',
-          ]"
+          :taskTitle="task.title"
+          :taskPoint="task.point"
+          :isSelect="task.isSelect"
         >
-          {{ task.title }}
-          <br />
-          {{ task.point }}pt
-          <br />
-          {{ task.isSelect ? "選択中" : "未選択" }}
-        </button>
+        </TaskButtom>
       </div>
     </div>
     <div>
@@ -122,6 +116,7 @@
 
 <script setup lang="ts">
 import type { Task } from "~/types/code";
+import TaskButtom from "~/components/atoms/taskButtom.vue";
 // TODO: APIから取得できるようにする
 const taskList = ref<Task[]>([
   { id: 1, title: "掃除", point: 3, isSelect: false },
@@ -165,9 +160,9 @@ const addPoint = () => {
   showSuccessAddPointModal.value = true;
 };
 const addTask = () => {
-  if(!newTask.value.title || !newTask.value.point){
-    alert("タスク名が未入力またはポイントが0ptです")
-    return
+  if (!newTask.value.title || !newTask.value.point) {
+    alert("タスク名が未入力またはポイントが0ptです");
+    return;
   }
   taskList.value.push({
     id: taskList.value.length + 1,
