@@ -4,7 +4,7 @@
     <p>追加予定の合計ポイント: {{ sumPoint }}</p>
     <div class="my-2">
       <div class="grid grid-cols-5 gap-2">
-        <TaskButtom
+        <taskButton
           v-for="task in taskList"
           :key="task.id"
           @click="selectTask(task.id)"
@@ -12,12 +12,12 @@
           :taskPoint="task.point"
           :isSelect="task.isSelect"
         >
-        </TaskButtom>
+        </taskButton>
       </div>
     </div>
     <div>
       <button
-        class="bg-green-500 text-white font-bold py-2 px-4 mx-2 rounded hover:bg-blue-700"
+        class="bg-green-500 text-white font-bold py-2 px-4 mx-2 rounded hover:bg-green-700"
         @click="openAddTaskModal"
       >
         タスク追加
@@ -116,7 +116,7 @@
 
 <script setup lang="ts">
 import type { Task } from "~/types/code";
-import TaskButtom from "~/components/atoms/taskButtom.vue";
+import taskButton from "~/components/atoms/taskButton.vue";
 // TODO: APIから取得できるようにする
 const taskList = ref<Task[]>([
   { id: 1, title: "掃除", point: 3, isSelect: false },

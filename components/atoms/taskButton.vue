@@ -14,8 +14,8 @@
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-  taskTitle: String;
-  taskPoint: Number;
-  isSelect: Boolean;
+  taskTitle: string;
+  taskPoint: number;
+  isSelect: boolean;
 }>();
 </script>
